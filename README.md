@@ -16,7 +16,9 @@ Options:
   -h, --help      display help for command
 
 Commands:
-  list            list greengrass group
-  help [command]  display help for command
+  list                    list greengrass group
+  subscription [options]  list greengrass group
+  help [command]          display help for command
 ```
+
 
