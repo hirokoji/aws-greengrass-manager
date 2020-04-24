@@ -19,7 +19,7 @@ export class Cli{
 
         program
             .command('subscription')
-            .description('list greengrass group')
+            .description('show subscription')
             .requiredOption('-g, --group <group>', 'Target greengrass group')
             .action(async (cmd) => {
 

@@ -17,7 +17,7 @@ Options:
 
 Commands:
   list                    list greengrass group
-  subscription [options]  list greengrass group
+  subscription [options]  show subscription
   help [command]          display help for command
 ```
 
