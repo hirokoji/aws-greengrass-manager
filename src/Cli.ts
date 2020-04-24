@@ -54,11 +54,41 @@ export class Cli{
         const subscriptions = await this.gg.getSubscription(attr.SubscriptionDefinitionId, attr.SubscriptionDefinitionVersionId)
 
 
-        console.log(`Source  Target  Topic`)
-        subscriptions.forEach((subscription) => {
-            const source = subscription.Source.split('/')[1] ? subscription.Source.split('/')[1] : subscription.Source;
-            const target = subscription.Target.split('/')[1] ? subscription.Target.split('/')[1] : subscription.Target;
-            console.log(`${source}  ${target}  ${subscription.Subject}`)
+        console.log(`Source: Target  Topic`)
+        console.log(` ->  Target  Topic`)
+
+        const sources = [...new Set(subscriptions.map(s => s.Source))];
+        const structSub: StructSubscriptions = {};
+        sources.forEach((source) => {
+            structSub[source] = [];
         });
+
+        subscriptions.forEach((subscription) => {
+            const targetShort = subscription.Target.split('/')[1] ? subscription.Target.split('/')[1] : subscription.Target;
+            structSub[subscription.Source].push({target: targetShort, topic: subscription.Subject})
+        });
+
+        sources.forEach((source) => {
+
+            const sourceShort = source.split('/')[1] ? source.split('/')[1] : source;
+            console.log(`${sourceShort}:`);
+            structSub[source].forEach((sub) => {
+                console.log(` ->  ${sub.target}  ${sub.topic}`);
+            });
+
+        })
+
     }
+}
+
+type tmp ={
+
+}
+
+type StructSubscriptions = {
+    [source:string]:
+        {
+            target: string
+            topic: string
+        }[]
 }
