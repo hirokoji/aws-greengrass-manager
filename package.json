@@ -28,7 +28,7 @@
     "vscode"
   ],
   "dependencies": {
-    "aws-sdk": "^2.662.0",
+    "aws-sdk": "^2.814.0",
     "commander": "^5.0.0"
   },
   "devDependencies": {
